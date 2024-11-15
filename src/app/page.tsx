@@ -39,7 +39,7 @@ const pageCards: PageCardProps[] = [
   { title: "Proto Specs Page", description: "This page includes the assumed measurements of your garment. These specs can be fully edited if they're not accurate.", image: "/placeholder.svg?height=200&width=200" },
   { title: "1st & 2nd Fit Specs", description: "This page has a chart for you or the manufacturer to input adjusted specs after the first and second fittings of the produced prototype.", image: "/placeholder.svg?height=200&width=200" },
   { title: "Fit & Comment Page", description: "This page is for your comments on the first and second fittings. This is where you record the necessary adjustments needed for a proper fit.", image: "/placeholder.svg?height=200&width=200" },
-  { title: "GRADED SPECS PAGE", description: "This page includes the final measurements of the garment that will be used for the full production run. These final measurements are added in later by the designer or manufacturer.", image: "/placeholder.svg?height=200&width=200" },
+  { title: "Graded Specs Page", description: "This page includes the final measurements of the garment that will be used for the full production run. These final measurements are added in later by the designer or manufacturer.", image: "/placeholder.svg?height=200&width=200" },
 ];
 
 const pricingPlans: PricingPlanProps[] = [
@@ -98,7 +98,6 @@ const additionalPlans: PricingPlanProps[] = [
 ];
 
 // Components
-
 const Header: React.FC = () => (
   <header className="flex justify-between items-center py-4 px-8">
     <div className="flex items-center w-64">
@@ -124,12 +123,12 @@ const Header: React.FC = () => (
 );
 
 const PageCard: React.FC<{ card: PageCardProps }> = ({ card }) => (
-  <div className="w-full max-w-[647px] h-auto pt-5 rounded-tl-[48px] border-t border-l border-[#016AFF] shadow-md">
+  <div className="w-full bg-white rounded-tl-[48px] border-t border-l border-[#016AFF] shadow-md overflow-hidden">
     <div className="p-6 flex flex-col md:flex-row">
-      <div className="w-full md:w-1/2 pr-4">
+      <div className="w-full md:w-1/2 pr-4 mb-4 md:mb-0">
         <Image src={card.image} alt={card.title} width={200} height={200} className="w-full h-auto object-cover rounded-xl" />
       </div>
-      <div className="w-full md:w-1/2 pl-4 mt-4 md:mt-0">
+      <div className="w-full md:w-1/2 pl-4">
         <h3 className="text-xl font-semibold text-[#0047FF] mb-2">{card.title}</h3>
         <p className="text-sm text-gray-600">{card.description}</p>
       </div>
@@ -138,7 +137,7 @@ const PageCard: React.FC<{ card: PageCardProps }> = ({ card }) => (
 );
 
 const PricingCard: React.FC<{ plan: PricingPlanProps }> = ({ plan }) => (
-  <div className={`w-full max-w-[424px] h-auto rounded-tl-2xl border-t border-l ${plan.bgColor} p-6 flex flex-col`}>
+  <div className={`w-full rounded-tl-2xl border-t border-l ${plan.bgColor} p-6 flex flex-col`}>
     <div className={`text-4xl mb-4 ${plan.iconBgColor} w-16 h-16 flex items-center justify-center rounded-full`}>
       {plan.icon}
     </div>
@@ -163,12 +162,12 @@ const PricingCard: React.FC<{ plan: PricingPlanProps }> = ({ plan }) => (
 );
 
 const CircleDiagram: React.FC<CircleDiagramProps> = ({ title, percentage, description }) => (
-  <div className="relative w-full max-w-[704px] h-auto flex items-center justify-center">
-    <div className="absolute w-full h-full border-[5px] border-[#0047FF] rounded-full"></div>
-    <div className="absolute flex flex-col items-center text-center p-8">
-      <div className="text-7xl font-bold text-[#0047FF] mb-4">{percentage}</div>
-      <div className="text-4xl font-semibold text-[#0047FF] mb-6">{title}</div>
-      <p className="text-xl text-gray-600 max-w-[500px]">{description}</p>
+  <div className="relative w-full max-w-[350px] aspect-square">
+    <div className="absolute inset-0 border-[5px] border-[#0047FF] rounded-full"></div>
+    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+      <div className="text-5xl font-bold text-[#0047FF] mb-2">{percentage}</div>
+      <div className="text-2xl font-semibold text-[#0047FF] mb-4">{title}</div>
+      <p className="text-sm text-gray-600">{description}</p>
     </div>
   </div>
 );
@@ -188,16 +187,7 @@ const Footer: React.FC = () => (
                 <path d="M19 0h-14c-2.761..."></path>
               </svg>
             </a>
-            {/* Repeat similar blocks for Facebook, Twitter, Instagram */}
-            {/* Example for Facebook */}
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              <span className="sr-only">Facebook</span>
-              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                {/* Facebook Icon SVG */}
-                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991..."></path>
-              </svg>
-            </a>
-            {/* Add other social icons similarly */}
+            {/* ...other social icons */}
           </div>
         </div>
         <div>
@@ -247,13 +237,13 @@ const TechpackLanding: React.FC = () => (
 
     <main className="bg-gradient-to-b from-[#E6FFF9] via-[#E1F9FF] to-[#E6F4FF]">
       <div className="h-1 bg-gradient-to-r from-green-300 via-blue-300 to-blue-400"></div>
-      <div className="max-w-6xl mx-auto px-6 pt-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <section className="text-center mb-16">
-          <h1 className="text-6xl font-bold text-[#0047FF] leading-tight mb-12">
+        <section className="text-center py-16 mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#0047FF] leading-tight mb-12">
             Create fashion techpacks 10x faster with the help of AI
           </h1>
-          <button className="bg-[#0047FF] text-white px-8 py-3 rounded-full flex items-center text-lg font-medium">
+          <button className="bg-[#0047FF] text-white px-8 py-3 rounded-full flex items-center text-lg font-medium mx-auto">
             Get Started
             <ArrowRight className="ml-2 h-5 w-5" />
           </button>
@@ -307,8 +297,8 @@ const TechpackLanding: React.FC = () => (
 
         {/* Pricing Section */}
         <section className="py-16 bg-white">
-          <div className="max-w-[1320px] mx-auto px-6">
-            <h2 className="text-5xl font-bold text-[#0047FF] text-center mb-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0047FF] text-center mb-4">
               Explore Our Plans and Pricing
             </h2>
             <p className="text-center text-xl text-gray-600 mb-12">
@@ -329,14 +319,14 @@ const TechpackLanding: React.FC = () => (
 
         {/* Sustainability Section */}
         <section className="py-32 bg-[#EDF3FF]">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-5xl font-bold text-[#0047FF] mb-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0047FF] mb-6">
               Sustainability
             </h2>
-            <p className="text-2xl text-gray-600 mb-16">
+            <p className="text-xl sm:text-2xl text-gray-600 mb-16">
               10% of our profit will be used to help the world. Here's how:
             </p>
-            <div className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-20">
+            <div className="flex flex-col md:flex-row justify-center items-center space-y-12 md:space-y-0 md:space-x-12">
               <CircleDiagram
                 title="Eden Reforestation Projects"
                 percentage="5%"
@@ -353,7 +343,7 @@ const TechpackLanding: React.FC = () => (
 
         {/* Call to Action Section */}
         <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-3xl shadow-lg p-8 text-center">
               <h2 className="text-3xl font-bold text-[#0047FF] mb-4">
                 Create Your First AI Techpack Today!
@@ -372,4 +362,6 @@ const TechpackLanding: React.FC = () => (
   </div>
 );
 
-export default TechpackLanding;
+export default function Home() {
+  return <TechpackLanding />;
+}
